@@ -2,10 +2,11 @@
 const todoInput = document.querySelector(".todo-input")
 const todoBtn = document.querySelector(".todo-button")
 const todoList = document.querySelector(".todo-list")
-
+const filterOp = document.querySelector('.filter-todos')
 //Event Listener
 todoBtn.addEventListener('click',addToDo)
 todoList.addEventListener('click',deletechk)
+filterOp.addEventListener('click',filterTodo)
 
 // Functions
 function addToDo(e){
@@ -44,4 +45,30 @@ function deletechk(e){
         const todo = item.parentElement
         todo.classList.toggle("done")
     }
+}
+
+///filterTodo
+function filterTodo(e){
+const option = todoList.childNodes
+option.forEach(function(todo){
+    switch(e.target.value){
+        case "all":
+            todo.style.display = 'flex'
+            break;
+        case "completed":
+            if(todo.classList.contains("done")){
+                todo.style.display = "flex"
+            } else {
+                todo.style.display = "none"
+            }
+            break;
+        case 'uncompleted':
+            if(!todo.classList.contains("done")){
+                todo.style.display = "flex"
+            } else {
+                todo.style.display = "none"
+            }
+            break;
+    }
+})
 }
