@@ -4,6 +4,7 @@ const todoBtn = document.querySelector(".todo-button")
 const todoList = document.querySelector(".todo-list")
 const filterOp = document.querySelector('.filter-todos')
 //Event Listener
+document.addEventListener("DOMContentLoaded",getTodos)
 todoBtn.addEventListener('click',addToDo)
 todoList.addEventListener('click',deletechk)
 filterOp.addEventListener('click',filterTodo)
@@ -40,6 +41,7 @@ function deletechk(e){
     const item = e.target
     if(item.classList.contains('delete-btn')){
         const todo =  item.parentElement
+        removeLocalTodo(todo)
         todo.remove()
     }
 
@@ -101,7 +103,7 @@ function getTodos(){
         todoDiv.classList.add("todo")
         const newTodo = document.createElement("li")
         newTodo.classList.add("todo-item")
-        newTodo.textContent= todoInput.value
+        newTodo.textContent= todo
         todoDiv.appendChild(newTodo)
         const completedBtn = document.createElement('button')
         completedBtn.innerHTML = `<i class="fas fa-check"></i>`
@@ -115,4 +117,19 @@ function getTodos(){
         todoList.appendChild(todoDiv)
     }
     )
+}
+
+
+//to remove todos
+function removeLocalTodo(todo){
+    let todos
+    if (localStorage.getItem('todos')===null) {
+        todos =[]
+    }else{
+        todos = JSON.parse(localStorage.getItem('todos'))
+    }
+    const todoIndex = todo.children[0].innerText
+    todos.splice(todos.indexOf(todoIndex),1)
+    localStorage.setItem("todos",JSON.stringify(todos))
+
 }
