@@ -10,7 +10,7 @@ function addToDo(e){
 e.preventDefault();
 
 const todoDiv = document.createElement('div')
-todoDiv.classList.add("add")
+todoDiv.classList.add("todo")
 const newTodo = document.createElement("li")
 newTodo.classList.add("todo-item")
 newTodo.textContent= todoInput.value
