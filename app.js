@@ -19,6 +19,8 @@ newTodo.classList.add("todo-item")
 newTodo.textContent= todoInput.value
 todoDiv.appendChild(newTodo)
 
+saveLocalTodos(todoInput.value)
+
 const completedBtn = document.createElement('button')
 completedBtn.innerHTML = `<i class="fas fa-check"></i>`
 completedBtn.classList.add('completed-btn')
@@ -68,7 +70,20 @@ option.forEach(function(todo){
             } else {
                 todo.style.display = "none"
             }
-            break;
+            break; 
     }
 })
+}
+
+//to save on storage
+function saveLocalTodos(todo){
+    let todos
+    if (localStorage.getItem('todos')===null) {
+        todos =[]
+    }else{
+        todos = JSON.parse(localStorage.getItem('todos'))
+    }
+
+    todos.push(todo)
+    localStorage.setItem('todos',JSON.stringify(todos))
 }
