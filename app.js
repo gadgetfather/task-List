@@ -34,5 +34,14 @@ todoInput.value=""
 
 ////to delete
 function deletechk(e){
-    console.log(e.target)
+    const item = e.target
+    if(item.classList.contains('delete-btn')){
+        const todo =  item.parentElement
+        todo.remove()
+    }
+
+    if(item.classList.contains('completed-btn')){
+        const todo = item.parentElement
+        todo.classList.toggle("done")
+    }
 }
