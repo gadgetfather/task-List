@@ -12,6 +12,7 @@ body{
     min-height: 100vh;
 }
 header{
+    color: beige;
     font-size: 1.5rem;
 }
 header,form{
