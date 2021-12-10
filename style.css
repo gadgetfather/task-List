@@ -1,4 +1,22 @@
 @import url('https://fonts.googleapis.com/css2?family=Outfit&display=swap');
+
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
 body{
     font-family: 'Outfit', sans-serif;
+    background-image: linear-gradient(to right top, #fbbc47, #cc7e45, #8d4d3d, #482729, #000000);
+    background-repeat: no-repeat;
+    min-height: 100vh;
+}
+header{
+    font-size: 1.5rem;
+}
+header,form{
+    display: flex;
+    min-height: 20vh;
+    justify-content: center;
+    align-items: center;
 }
