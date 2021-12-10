@@ -2,8 +2,10 @@
 const todoInput = document.querySelector(".todo-input")
 const todoBtn = document.querySelector(".todo-button")
 const todoList = document.querySelector(".todo-list")
+
 //Event Listener
 todoBtn.addEventListener('click',addToDo)
+todoList.addEventListener('click',deletechk)
 
 // Functions
 function addToDo(e){
@@ -26,4 +28,11 @@ deleteBtn.innerHTML = `<i class="fas fa-trash"></i>`
 deleteBtn.classList.add('delete-btn')
 todoDiv.appendChild(deleteBtn)
 todoList.appendChild(todoDiv)
+todoInput.value=""
+}
+
+
+////to delete
+function deletechk(e){
+    console.log(e.target)
 }
